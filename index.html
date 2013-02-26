@@ -1,12 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>  <!-- <meta name="apple-itunes-app" content="app-id=432488169"> -->    
-    <link rel="apple-touch-icon-precomposed" href="http://cc.cocimg.com/bbs/3g/img/ccicon.png" >
-    <!--     <iframe src="http://widgets.itunes.apple.com/appstore.html?wtype=1&app_id=0&country=us&partnerId=0&affiliate_id=0" frameborder=0 style="overflow-x:hidden;overflow-y:hidden;width:250px;height:300px;border:0px" ></iframe> -->    
-    <body>
-      <a href="https://developer.apple.com/library/prerelease/ios/#referencelibrary/GettingStarted/RoadMapiOSCh/chapters/Introduction.html#//apple_ref/doc/uid/TP40012668">/* 我靠官方中文文档啊！！亲，猛点我: D */</a>
-      <!--        
-          <script>            
-              window.location = "weixin:";            
-              setTimeout( function(){ window.location="http://itunes.apple.com/us/app/wechat!/id414478124?mt=8";   } , 1500);
-          </script>-->
-</body></html>
+<html>   
+    <head>   
+        <meta name="viewport" content="width=device-width" />   
+    </head>   
+    <body>   
+        <h2><a id="applink1" href="mtcmtc://profile/YiBao">Open scheme(mtcmtc) defined in iPhone with parameters </a></h2>   
+        <h2><a id="applink2" href="unknown://nowhere">open unknown with fallback to appstore</a></h2>   
+        <p><i>Only works on iPhone!</i></p>      
+          
+        <script type="text/javascript">   
+            // To avoid the "protocol not supported" alert, fail must open another app.  
+            var appstore = "itms://itunes.apple.com/us/app/facebook/id284882215?mt=8&uo=6";  
+            function applink(fail){  
+                return function(){  
+                    var clickedAt = +new Date;  
+                    // During tests on 3g/3gs this timeout fires immediately if less than 500ms.  
+                    setTimeout(function(){  
+                              // To avoid failing on return to MobileSafari, ensure freshness!  
+                              if (+new Date - clickedAt < 2000){  
+                              window.location = fail;  
+                              }  
+                              }, 500);      
+                };  
+            }  
+            document.getElementById("applink1").onclick = applink(appstore);  
+            document.getElementById("applink2").onclick = applink(appstore);  
+            </script>   
+    </body>   
+</html>  
+
